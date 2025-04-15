@@ -36,8 +36,8 @@ Ce projet est un **PoC RAG (Retrieval-Augmented Generation)** qui permet à GPT-
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/ton-repo/azure-rag-pdf.git
-cd azure-rag-pdf
+git clone https://github.com/RedZNouggy/AI-project.git
+cd AI-project
 ```
 
 ### 2. Créer un environnement virtuel (optionnel mais recommandé)
