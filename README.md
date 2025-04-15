@@ -61,16 +61,16 @@ pip install -r requirements.txt
 Remplir le fichier `config.py` avec les valeurs suivantes :
 
 ```python
-AZURE_OPENAI_API_KEY = "<>"
-AZURE_OPENAI_ENDPOINT = ""
-AZURE_OPENAI_API_VERSION = ""
+AZURE_OPENAI_API_KEY = "<MY_API_KEY>"
+AZURE_OPENAI_ENDPOINT = "https://<MY_URL>.openai.azure.com/"
+AZURE_OPENAI_API_VERSION = "2023-05-15"
 
-EMBEDDING_DEPLOYMENT_NAME = ""
-GPT_DEPLOYMENT_NAME = ""
+EMBEDDING_DEPLOYMENT_NAME = "text-embedding-ada-002"
+GPT_DEPLOYMENT_NAME = "<GPT_DEPLOYMENT_NAME>"
 
-AZURE_SEARCH_ENDPOINT = ""
-AZURE_SEARCH_KEY = ""
-AZURE_SEARCH_INDEX_NAME = ""
+AZURE_SEARCH_ENDPOINT = "https://<SEARCH_URL>.search.windows.net"
+AZURE_SEARCH_KEY = "<SEARCH_API_KEY>"
+AZURE_SEARCH_INDEX_NAME = "rag-index"
 ```
 
 ---
