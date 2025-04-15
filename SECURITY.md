@@ -4,9 +4,9 @@
 
 | Status                      | Package                  | Versions           |
 |-----------------------------|--------------------------|--------------------|
-| ✅                         | azure-search-documents   | <=11.4b9           |
+| ✅                         | azure-search-documents   | ?                  |
 | ✅                         | langchain                | >=0.0.331          |
-| ❌                         | azure-search-documents   | >11.4b9          |
+| ❌                         | azure-search-documents   | ?                  |
 | ❌                         | langchain                | <0.0.331           |
 
 ## Reporting a Vulnerability
