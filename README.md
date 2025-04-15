@@ -1,2 +1,138 @@
 # AI-project
 Groupe49
+# 🧠 Azure RAG PDF Indexer & Assistant
+
+Ce projet est un **PoC RAG (Retrieval-Augmented Generation)** qui permet à GPT-4 d'interagir avec un ou plusieurs documents PDF hébergés localement, vectorisés et stockés dans **Azure AI Search**. L'utilisateur pose une question via une interface web (Streamlit), et GPT génère une réponse basée uniquement sur le contenu documentaire indexé.
+
+---
+
+## 📦 Fonctionnalités
+
+- 🔍 Extraction automatique de texte depuis un ou plusieurs fichiers PDF
+- ✂️ Découpage intelligent des documents en blocs sémantiques
+- 🔢 Génération d'embeddings via `text-embedding-ada-002` (Azure OpenAI)
+- 📥 Indexation des chunks vectorisés dans Azure AI Search
+- 💬 Appel à GPT-4 avec contexte documentaire injecté
+- 🌐 Interface utilisateur simple via Streamlit
+
+---
+
+## 📁 Structure du projet
+
+```
+.
+├── config.py              # Paramètres Azure (clés, endpoints, noms de déploiements)
+├── utils.py               # Fonctions utilitaires : extraction PDF, embeddings, chunking
+├── index_data.py          # Script d'injection des documents PDF dans Azure Search
+├── main.py                # Application frontend Streamlit (Q&A)
+├── data/docs/             # Dossier contenant les PDF à indexer
+└── requirements.txt       # Dépendances Python
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Cloner le projet
+
+```bash
+git clone https://github.com/ton-repo/azure-rag-pdf.git
+cd azure-rag-pdf
+```
+
+### 2. Créer un environnement virtuel (optionnel mais recommandé)
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Linux/macOS
+.venv\Scripts\activate     # Windows
+```
+
+### 3. Installer les dépendances
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔐 Configuration
+
+Remplir le fichier `config.py` avec les valeurs suivantes :
+
+```python
+AZURE_OPENAI_API_KEY = "<>"
+AZURE_OPENAI_ENDPOINT = ""
+AZURE_OPENAI_API_VERSION = ""
+
+EMBEDDING_DEPLOYMENT_NAME = ""
+GPT_DEPLOYMENT_NAME = ""
+
+AZURE_SEARCH_ENDPOINT = ""
+AZURE_SEARCH_KEY = ""
+AZURE_SEARCH_INDEX_NAME = ""
+```
+
+---
+
+## 📄 Injection des documents PDF
+
+Dépose tes fichiers PDF dans le dossier `data/docs/` :
+
+```
+data/docs/
+├── contrat_client.pdf
+├── norme_iso27001.pdf
+└── politique_sécurité.pdf
+```
+
+Puis lance :
+
+```bash
+python index_data.py
+```
+
+✔️ Ce script :
+- Crée (ou met à jour) l’index `rag-index`
+- Injecte tous les documents PDF du dossier `data/docs/`
+- Ajoute un champ `source` pour identifier d’où viennent les chunks
+
+---
+
+## 💬 Lancer l’interface utilisateur
+
+```bash
+streamlit run main.py
+```
+
+L’interface web s’ouvre automatiquement à [http://localhost:8501](http://localhost:8501)
+
+---
+
+## 🧠 Exemple d’utilisation
+
+> 💬 **Question :** Quels sont les délais de résolution en cas de panne critique ?  
+> 🤖 **Réponse :** Selon le contrat (source : contrat_client.pdf), les pannes critiques doivent être traitées sous 4h ouvrées.
+
+---
+
+## 🛡️ Sécurité
+
+- Aucun contenu n’est envoyé à des tiers hors Azure.
+- Les documents PDF restent locaux, seuls les vecteurs sont stockés dans Azure Search.
+- GPT n'a accès qu’au contexte injecté.
+
+---
+
+## 📌 Prérequis Azure
+
+- Azure OpenAI avec :
+  - Déploiement `gpt-4`
+  - Déploiement `text-embedding-ada-002`
+- Azure AI Search (`Basic` ou supérieur)
+
+---
+
+## 📃 Licence
+
+Projet éducatif / démonstratif – MIT ou à adapter selon ton usage.
