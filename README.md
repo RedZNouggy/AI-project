@@ -137,4 +137,4 @@ L’interface web s’ouvre automatiquement à [http://localhost:8501](http://lo
 
 ## 📃 Licence
 
-Projet éducatif / démonstratif – MIT ou à adapter selon ton usage.
+Projet démonstratif
