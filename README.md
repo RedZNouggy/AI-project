@@ -6,6 +6,8 @@ Ce projet est un **PoC RAG (Retrieval-Augmented Generation)** qui permet à GPT-
 
 ---
 
+[README in English](https://github.com/RedZNouggy/AI-project/blob/main/README-EN.MD)
+
 ## 📦 Fonctionnalités
 
 - 🔍 Extraction automatique de texte depuis un ou plusieurs fichiers PDF
