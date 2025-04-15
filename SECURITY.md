@@ -4,14 +4,14 @@
 
 | Package                  | Supported Versions |
 |--------------------------|--------------------|
-| azure-search-documents   | >=11.4.0b8, <11.4.0 |
+| azure-search-documents   | <=11.4.0b8 |
 | langchain                | >=0.0.331          |
 
 ## Unsupported Versions
 
 | Package                  | Unsupported Versions |
 |--------------------------|----------------------|
-| azure-search-documents   | >=11.4.0             |
+| azure-search-documents   | >11.4.0b8            |
 | langchain                | <0.0.331             |
 
 ## Reporting a Vulnerability
