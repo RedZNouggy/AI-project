@@ -7,6 +7,7 @@
 | ✅                         | azure-search-documents   | <=11.4.0b8         |
 | ✅                         | langchain                | >=0.0.331          |
 | ❌                         | azure-search-documents   | >11.4.0b8          |
+| ❌                         | langchain                | <0.0.331           |
 
 ## Reporting a Vulnerability
 
