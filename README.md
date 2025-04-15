@@ -111,6 +111,8 @@ L’interface web s’ouvre automatiquement à [http://localhost:8501](http://lo
 
 ## 🧠 Exemple d’utilisation
 
+> 💬 **Question** : Combien de temps faut-il faire cuire un fondant au chocolat ?
+> 🤖 **Réponse** : Selon la recette (source : livre_recettes_chocolat.pdf), le fondant au chocolat doit cuire 10 à 12 minutes à 180°C pour obtenir un cœur coulant.
 > 💬 **Question :** Quels sont les délais de résolution en cas de panne critique ?  
 > 🤖 **Réponse :** Selon le contrat (source : contrat_client.pdf), les pannes critiques doivent être traitées sous 4h ouvrées.
 
