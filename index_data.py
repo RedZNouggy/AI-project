@@ -4,12 +4,11 @@ import os
 import uuid
 from messages import (
     infotext,
-    successtext,
-    errortext
+    successtext
 )
 from azure.search.documents.indexes import SearchIndexClient
 from azure.search.documents.indexes.models import (
-    SearchIndex, SimpleField, SearchableField, VectorSearch, VectorSearchProfile, HnswAlgorithmConfiguration
+    SearchIndex, SimpleField, SearchableField, VectorSearch, HnswAlgorithmConfiguration
 )
 from azure.search.documents import SearchClient
 from azure.core.credentials import AzureKeyCredential
@@ -57,7 +56,7 @@ def create_index():
         fields=fields,
         vector_search=vector_search
     )
-    infotext(f"Trying to create the index {AZURE_SEARCH_INDEX_NAME}")
+    infotext(f"Trying to create the index {AZURE_SEARCH_INDEX_NAME}...")
     index_client.create_or_update_index(index)
     successtext(f"The Index : {AZURE_SEARCH_INDEX_NAME} has been successfully created.")
 
@@ -96,5 +95,5 @@ if __name__ == "__main__":
     create_index()
     for filename in os.listdir("data/docs/"):
         if filename.endswith(".pdf"):
-            infotext(f"Processing on the file : {filename}")
+            infotext(f"Processing on the file {filename}...")
             upload_chunks(os.path.join("data/docs/", filename), source=filename)
