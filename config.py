@@ -1,5 +1,5 @@
 AZURE_OPENAI_API_KEY = "<MY_API_KEY>"
-AZURE_OPENAI_ENDPOINT = "https://<MY_URL>.openai.azure.com/"
+AZURE_OPENAI_ENDPOINT = "https://<MY_URL>.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2025-01-01-preview"
 AZURE_OPENAI_API_VERSION = "2023-05-15"
 EMBEDDING_DEPLOYMENT_NAME = "text-embedding-ada-002"
 GPT_DEPLOYMENT_NAME = "<GPT_DEPLOYMENT_NAME>"
