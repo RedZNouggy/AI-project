@@ -9,7 +9,7 @@ from messages import (
 )
 from azure.search.documents.indexes import SearchIndexClient
 from azure.search.documents.indexes.models import (
-    SearchIndex, SimpleField, SearchableField, VectorSearch, HnswAlgorithmConfiguration
+    SearchIndex, SimpleField, SearchableField, VectorSearch, VectorSearchProfile, HnswAlgorithmConfiguration
 )
 from azure.search.documents import SearchClient
 from azure.core.credentials import AzureKeyCredential
@@ -57,8 +57,9 @@ def create_index():
         fields=fields,
         vector_search=vector_search
     )
-
+    infotext(f"Trying to create the index {AZURE_SEARCH_INDEX_NAME}")
     index_client.create_or_update_index(index)
+    successtext(f"The Index : {AZURE_SEARCH_INDEX_NAME} has been successfully created.")
 
 def upload_chunks(pdf_path, source):
     '''
@@ -89,14 +90,11 @@ def upload_chunks(pdf_path, source):
             "source": source
         })
     search_client.upload_documents(docs)
+    successtext(f"The data of the document : {pdf_path} has been successfully imported.")
 
 if __name__ == "__main__":
     create_index()
     for filename in os.listdir("data/docs/"):
         if filename.endswith(".pdf"):
             infotext(f"Processing on the file : {filename}")
-            try:
-                upload_chunks(os.path.join("data/docs/", filename), source=filename)
-                successtext(f"The file : {filename} has been successfully processed")
-            except KeyError as e:
-                errortext(f"Error processing the file {filename} : {e}")
+            upload_chunks(os.path.join("data/docs/", filename), source=filename)
