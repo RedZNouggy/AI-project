@@ -2,7 +2,11 @@
 
 import os
 import uuid
-from messages import infotext
+from messages import (
+    infotext,
+    successtext,
+    errortext
+)
 from azure.search.documents.indexes import SearchIndexClient
 from azure.search.documents.indexes.models import (
     SearchIndex, SimpleField, SearchableField, VectorSearch, HnswAlgorithmConfiguration
@@ -91,4 +95,8 @@ if __name__ == "__main__":
     for filename in os.listdir("data/docs/"):
         if filename.endswith(".pdf"):
             infotext(f"Processing on the file : {filename}")
-            upload_chunks(os.path.join("data/docs/", filename), source=filename)
+            try:
+                upload_chunks(os.path.join("data/docs/", filename), source=filename)
+                successtext(f"The file : {filename} has been successfully processed")
+            except KeyError as e:
+                errortext(f"Error processing the file {filename} : {e}")
