@@ -2,6 +2,7 @@
 
 import os
 import uuid
+from messages import infotext
 from azure.search.documents.indexes import SearchIndexClient
 from azure.search.documents.indexes.models import (
     SearchIndex, SimpleField, SearchableField, VectorSearch, HnswAlgorithmConfiguration
@@ -16,6 +17,21 @@ from config import (
 from utils import extract_text_from_pdf, chunk_text, get_embedding
 
 def create_index():
+    '''
+    Creates or updates an Azure Cognitive Search index with fields suitable for semantic search.
+
+    The index includes:
+        - A unique string ID (`id`)
+        - Searchable text content (`content`)
+        - A source identifier (`source`)
+        - A vector embedding field (`embedding`) configured for HNSW-based vector search
+
+    Uses the `AZURE_SEARCH_KEY`, `AZURE_SEARCH_ENDPOINT`, and `AZURE_SEARCH_INDEX_NAME` 
+    environment/configuration variables.
+
+    Returns:
+        None
+    '''
     credential = AzureKeyCredential(AZURE_SEARCH_KEY)
     index_client = SearchIndexClient(endpoint=AZURE_SEARCH_ENDPOINT, credential=credential)
 
@@ -41,6 +57,17 @@ def create_index():
     index_client.create_or_update_index(index)
 
 def upload_chunks(pdf_path, source):
+    '''
+    Extracts text from a PDF, splits it into chunks, generates embeddings, and uploads
+    the resulting documents to an Azure Cognitive Search index.
+
+    Parameters:
+        pdf_path (str): The path to the PDF file to be processed.
+        source (str): A label or identifier representing the source of the document (e.g., filename or context).
+
+    Returns:
+        None
+    '''
     credential = AzureKeyCredential(AZURE_SEARCH_KEY)
     search_client = SearchClient(
         endpoint=AZURE_SEARCH_ENDPOINT,
@@ -63,4 +90,5 @@ if __name__ == "__main__":
     create_index()
     for filename in os.listdir("data/docs/"):
         if filename.endswith(".pdf"):
+            infotext(f"Processing on the file : {filename}")
             upload_chunks(os.path.join("data/docs/", filename), source=filename)
