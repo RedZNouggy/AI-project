@@ -1,8 +1,10 @@
+#!/usr/bin/env python3
+
 import streamlit as st
 from utils import search_similar_chunks, ask_gpt
 
-st.title("IA (RAG)")
-query = st.text_input("Ask your question...")
+st.title("IA - Groupe 49 (RAG)")
+query = st.text_input("ask your questions about cooking...")
 
 if query:
     st.write("Searching for context...")
