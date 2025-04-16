@@ -62,7 +62,7 @@ Fill the `config.py` file with the following values:
 
 ```python
 AZURE_OPENAI_API_KEY = "<MY_API_KEY>"
-AZURE_OPENAI_ENDPOINT = "https://<MY_URL>.openai.azure.com/"
+AZURE_OPENAI_ENDPOINT = "https://<MY_URL>.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2025-01-01-preview"
 AZURE_OPENAI_API_VERSION = "2025-01-01-preview"
 
 EMBEDDING_DEPLOYMENT_NAME = "text-embedding-ada-002"
