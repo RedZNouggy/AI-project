@@ -25,6 +25,7 @@ This project is a **RAG (Retrieval-Augmented Generation) PoC** that enables GPT-
 ├── utils.py               # Fonctions utilitaires : extraction PDF, embeddings, chunking
 ├── index_data.py          # Script d'injection des documents PDF dans Azure Search
 ├── main.py                # Application frontend Streamlit (Q&A)
+├── messages.py            # Info, sucess, error, warning colored messages
 ├── data/docs/             # Dossier contenant les PDF à indexer
 └── requirements.txt       # Dépendances Python
 ```
