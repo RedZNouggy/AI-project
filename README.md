@@ -105,7 +105,7 @@ python index_data.py
 ## 💬 Lancer l’interface utilisateur
 
 ```bash
-streamlit run main.py --browser.serverAddress=<DNS or IP> --browser.serverPort=80 --server.address=192.168.1.155 --server.port=80
+streamlit run main.py
 ```
 
 L’interface web s’ouvre automatiquement à [http://localhost:8501](http://localhost:8501)
