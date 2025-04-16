@@ -109,12 +109,12 @@ def ask_gpt(context, question):
     Returns:
         str: The GPT-generated response based on the provided context and question.
     '''
-    messages = [
+    texts = [
         {"role": "system", "content": "Tu es un assistant utile."},
         {"role": "user", "content": f"Context:\n{context}\n\nQuestion: {question}"}
     ]
-    response = openai.completions.create(
-        engine=GPT_DEPLOYMENT_NAME,
-        messages=messages
+    response = openai.chat.completions.create(
+        model=GPT_DEPLOYMENT_NAME,
+        messages=texts
     )
-    return response["choices"][0]["message"]["content"]
+    return response.choices[0].message.content
