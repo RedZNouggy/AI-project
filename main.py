@@ -9,10 +9,8 @@ query = st.text_input("ask your questions about cooking...")
 if query:
     st.write("Searching for context...")
     context_chunks = search_similar_chunks(query)
-    context = "\n\n".join(context_chunks)
-    
+    CONTEXT = "\n\n".join(context_chunks)
     st.write("Generating answer...")
-    answer = ask_gpt(context, query)
-    
+    answer = ask_gpt(CONTEXT, query)
     st.markdown("### Answer :")
     st.write(answer)
