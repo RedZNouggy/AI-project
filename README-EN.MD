@@ -1,5 +1,5 @@
 # AI-project
-Groupe 49
+
 # 🧠 Azure RAG PDF Indexer & Assistant (EN)
 
 This project is a **RAG (Retrieval-Augmented Generation) PoC** that enables GPT-4 to interact with one or more locally hosted PDF documents, vectorized and stored in **Azure AI Search**. The user asks a question via a web interface (Streamlit), and GPT generates an answer based solely on the indexed document content.
